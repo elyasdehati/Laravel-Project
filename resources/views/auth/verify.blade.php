@@ -44,7 +44,7 @@
             </div>
         @endif
 
-        @if ($error->any())
+        {{-- @if ($error->any())
             <div class="alert alert-danger mt-3">
                 <ul>
                     @foreach ($error->all() as $error)
@@ -52,7 +52,7 @@
                     @endforeach
                 </ul>
             </div>
-        @endif
+        @endif --}}
 
     <form method="POST" action="{{ route('custom.verification.verify') }}" class="my-4">
         @csrf
