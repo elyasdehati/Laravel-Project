@@ -38,11 +38,11 @@
                                     <div class="pt-0">
 
 
-        {{-- @if (session('status'))
+        @if (session('status'))
             <div class="alert alert-success">
                 {{ session('status') }}
             </div>
-        @endif --}}
+        @endif
 
         {{-- @if ($error->any())
             <div class="alert alert-danger mt-3">
