@@ -41,12 +41,11 @@
             <!-- ============================================================== -->
 
             <div class="content-page">
-                
-                @yield('admin')
+                @yield('admin') 
                 <!-- content -->
 
                 <!-- Footer Start -->
-            @include('admin.body.footer')
+                @include('admin.body.footer')
                 <!-- end Footer -->
                 
             </div>
@@ -58,22 +57,22 @@
         <!-- END wrapper -->
 
         <!-- Vendor -->
-        <script src="{{ asset('backend/assetsassets/libs/jquery/jquery.min.js') }}"></script>
-        <script src="{{ asset('backend/assetsassets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('backend/assetsassets/libs/simplebar/simplebar.min.js') }}"></script>
-        <script src="{{ asset('backend/assetsassets/libs/node-waves/waves.min.js') }}"></script>
-        <script src="{{ asset('backend/assetsassets/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
-        <script src="{{ asset('backend/assetsassets/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
-        <script src="{{ asset('backend/assetsassets/libs/feather-icons/feather.min.js') }}"></script>
+        <script src="{{ asset('backend/assets/libs/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('backend/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('backend/assets/libs/simplebar/simplebar.min.js') }}"></script>
+        <script src="{{ asset('backend/assets/libs/node-waves/waves.min.js') }}"></script>
+        <script src="{{ asset('backend/assets/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
+        <script src="{{ asset('backend/assets/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
+        <script src="{{ asset('backend/assets/libs/feather-icons/feather.min.js') }}"></script>
 
         <!-- Apexcharts JS -->
-        <script src="{{ asset('backend/assetsassets/libs/apexcharts/apexcharts.min.js') }}"></script>
+        <script src="{{ asset('backend/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 
         <!-- for basic area chart -->
         <script src="https://apexcharts.com/samples/assets/stock-prices.js"></script>
 
         <!-- Widgets Init Js -->
-        <script src="{{ asset('backend/assetsassets/js/pages/analytics-dashboard.init.js') }}"></script>
+        <script src="{{ asset('backend/assets/js/pages/analytics-dashboard.init.js') }}"></script>
 
         <!-- App js-->
         <script src="{{ asset('backend/assets/js/app.js') }}"></script>
