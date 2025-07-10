@@ -98,7 +98,7 @@ class AdminController extends Controller
     private function deleteOldImage(string $oldPhotoPath): void{
         $fullpath = public_path('upload/user_images/'.$oldPhotoPath);
         if (file_exists($fullpath)) {
-            unlink($fullpath);
+            unlink($fullpat);
         }
         
     }
