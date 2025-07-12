@@ -3,11 +3,10 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-
-
+use App\Http\Controllers\Backend\ReviewController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.index');
 });
 
 Route::get('/dashboard', function () {
@@ -33,4 +32,11 @@ require __DIR__.'/auth.php';
     Route::post('/profile/store', [AdminController::class, 'ProfileStore'])->name('profile.store');
     Route::post('/admin/password/update', [AdminController::class, 'PasswordUpdate'])->name('admin.password.update');
     
+});
+
+Route::middleware('auth')->group(function () {
+    Route::controller(ReviewController::class)->group(function () {
+        Route::get('/all/review','AllReview')->name('all.review');
+        Route::get('/add/review','AddReview')->name('add.review');
+    });
 });
