@@ -42,7 +42,7 @@
                             </li> -->
 
                             <li class="menu-title">Pages</li>
-
+                            {{-- Review --}}
                             <li>
                                 <a href="#sidebarAuth" data-bs-toggle="collapse">
                                     <i data-feather="users"></i>
@@ -61,20 +61,19 @@
                                 </div>
                             </li>
 
+                            {{-- Slider --}}
                             <li>
                                 <a href="#sidebarError" data-bs-toggle="collapse">
                                     <i data-feather="alert-octagon"></i>
-                                    <span> Error Pages </span>
+                                    <span> Slider Setup </span>
                                     <span class="menu-arrow"></span>
                                 </a>
                                 <div class="collapse" id="sidebarError">
                                     <ul class="nav-second-level">
                                         <li>
-                                            <a href="error-404.html" class="tp-link">Error 404</a>
+                                            <a href="{{route('get.slider')}}" class="tp-link">Get Slider</a>
                                         </li>
-                                        <li>
-                                            <a href="error-500.html" class="tp-link">Error 500</a>
-                                        </li>
+                                        
                                     </ul>
                                 </div>
                             </li>
