@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 use App\Models\Slider;
 use App\Http\Controllers\Controller;
+use App\Models\Title;
 use Illuminate\Http\Request;
 
 use Intervention\Image\ImageManager;
@@ -76,6 +77,19 @@ class SliderController extends Controller
         }
 
         $slider->save();
+        return response()->json(['success' => true]);
+        
+
+    }
+    // End Method
+
+    public function EditFeatures(Request $request, $id) {
+        $title = Title::findorFail($id);
+
+        if ($request->has('features')) {
+            $title->features = $request->features;
+        }
+        $title->save();
         return response()->json(['success' => true]);
         
 
