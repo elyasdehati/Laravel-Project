@@ -50,5 +50,6 @@ Route::middleware('auth')->group(function () {
         Route::post('/update/slider','UpdateSlider')->name('update.slider');
         Route::post('/edit-slider/{id}','EditSlider');
         Route::post('/edit-features/{id}','EditFeatures');
+        Route::post('/edit-review/{id}','EditReview');
     });
 });
