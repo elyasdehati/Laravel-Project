@@ -38,7 +38,7 @@
 
 
 
-<form action="{{route('update.review')}}" method="post" enctype="multipart/form-data">
+<form action="{{route('update.slider')}}" method="post" enctype="multipart/form-data">
     @csrf
 
     <input type="hidden" name="id" value="{{$slider->id}}">
