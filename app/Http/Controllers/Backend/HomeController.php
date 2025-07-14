@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Clarify;
 use App\Models\Features;
+use App\Models\Usability;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
@@ -121,6 +122,64 @@ class HomeController extends Controller
               
         $notification = array(
             'message' => 'Clarify Updated Without Image Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+        }
+      
+    }
+    //End Method
+
+    public function GetUsability(){
+        $usability = Usability::find(1);
+
+        return view('admin.backend.usability.get_usability', compact('usability'));
+    }
+    // End Method
+
+    public function UpdateUsability(Request $request){
+
+        $usa_id = $request->id;
+        $usability = Usability::find($usa_id);
+
+        if ($request->file('image')) {
+            $image = $request->file('image');
+            $manager = new ImageManager(new Driver());
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            $img = $manager->read($image);
+            $img->resize(560,400)->save(public_path('upload/usability/'.$name_gen));
+            $save_url = 'upload/usability/'.$name_gen;
+
+            if (file_exists(public_path($usability->image))) {
+                @unlink(public_path($usability->image));
+            }
+
+            Usability::find($usa_id)->update([
+                'title' => $request->title,
+                'description' => $request->description,
+                'youtube' => $request->youtube,
+                'link' => $request->link,
+                'image' => $save_url,
+            ]);
+              
+        $notification = array(
+            'message' => 'Usability Updated with Image Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+        }else{
+
+            Usability::find($usa_id)->update([
+                'title' => $request->title,
+                'description' => $request->description,
+                'youtube' => $request->youtube,
+                'link' => $request->link,
+            ]);
+              
+        $notification = array(
+            'message' => 'Usability Updated Without Image Successfully',
             'alert-type' => 'success'
         );
 
