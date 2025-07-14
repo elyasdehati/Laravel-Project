@@ -96,6 +96,23 @@
                                 </div>
                             </li>
 
+                            <li>
+                                <a href="#clarifies" data-bs-toggle="collapse">
+                                    <i data-feather="alert-octagon"></i>
+                                    <span> Calrifies Setup </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="clarifies">
+                                    <ul class="nav-second-level">
+                                        <li>
+                                            <a href="{{route('get.clarifies')}}" class="tp-link">Get Clarify</a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </li>
+
+
                             <li class="menu-title mt-2">General</li>
 
                             <li>
