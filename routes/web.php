@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\backend\SliderController;
 
@@ -52,5 +53,14 @@ Route::middleware('auth')->group(function () {
         Route::post('/edit-features/{id}','EditFeatures');
         Route::post('/edit-review/{id}','EditReview');
         Route::post('/edit-answer/{id}','EditAnswer');
+    });
+
+    Route::controller(HomeController::class)->group(function () {
+        Route::get('/all/feature', 'AllFeature')->name('all.feature');
+        Route::get('/add/feature', 'AddFeature')->name('add.feature');
+        Route::post('/store/feature', 'StoreFeature')->name('store.feature');
+        Route::get('/edit/feature/{id}', 'EditFeature')->name('edit.feature');
+        Route::post('/update/feature', 'UpdateFeature')->name('update.feature');
+        Route::get('/delete/feature/{id}', 'DeleteFeature')->name('delete.feature');
     });
 });
