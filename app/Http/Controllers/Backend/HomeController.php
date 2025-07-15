@@ -250,4 +250,12 @@ class HomeController extends Controller
         return redirect()->back()->with($notification);
     }
     // End Method
+
+    public function UpdateWithOnclickConnect(Request $request, $id){
+
+        $connect = Connect::findOrFail($id);
+
+        $connect->update($request->only(['title', 'description']));
+        return response()->json(['success' => true, 'message' => 'Updated seccessfully']);
+    }
 }
