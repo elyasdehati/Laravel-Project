@@ -73,4 +73,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/get/usability', 'GetUsability')->name('get.usability');
         Route::post('/update/usability', 'UpdateUsability')->name('update.usability');
     });
+    // End Method
+
+    Route::controller(HomeController::class)->group(function () {
+        Route::get('/all/connect', 'AllConnect')->name('all.connect');
+        Route::get('/add/connect', 'AddConnect')->name('add.connect');
+        Route::post('/store/connect', 'StoreConnect')->name('store.connect');
+        
+    });
 });
