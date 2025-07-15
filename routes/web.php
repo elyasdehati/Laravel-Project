@@ -84,4 +84,14 @@ Route::middleware('auth')->group(function () {
         Route::get('/delete/connect/{id}', 'DeleteConnect')->name('delete.connect');
         Route::post('/update-connect/{id}', 'UpdateWithOnclickConnect');
     });
+
+    Route::controller(HomeController::class)->group(function () {
+        Route::get('/all/faqs', 'AllFaqs')->name('all.faqs');
+        Route::get('/add/faqs', 'AddFaqs')->name('add.faqs');
+        Route::post('/store/faqs', 'StoreFaqs')->name('store.faqs');
+        Route::get('/edit/faqs/{id}', 'EditFaqs')->name('edit.faqs');
+        Route::post('/update/faqs', 'UpdateFaqs')->name('update.faqs');
+        Route::get('/delete/faqs/{id}', 'DeleteFaqs')->name('delete.faqs');
+        
+    });
 });

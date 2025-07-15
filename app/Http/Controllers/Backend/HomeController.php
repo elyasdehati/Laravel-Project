@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Clarify;
 use App\Models\Connect;
+use App\Models\Faq;
 use App\Models\Features;
 use App\Models\Usability;
 use Illuminate\Http\Request;
@@ -257,5 +258,66 @@ class HomeController extends Controller
 
         $connect->update($request->only(['title', 'description']));
         return response()->json(['success' => true, 'message' => 'Updated seccessfully']);
+    }
+    // End Method
+
+    public function AllFaqs(){
+        $faqs = Faq::latest()->get();
+        return view('admin.backend.faqs.all_faqs', compact('faqs'));
+    }
+    //End Method
+
+    public function AddFaqs(){
+        return view('admin.backend.faqs.add_faqs');
+    }
+    //End Method
+
+    public function StoreFaqs(Request $request){
+
+            Faq::create([
+                'title' => $request->title,
+                'description' => $request->description,
+            ]);
+
+        $notification = array(
+            'message' => 'Faqs Inserted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.faqs')->with($notification);
+    }
+    //End Method
+
+    public function EditFaqs($id) {
+        $faqsId = Faq::find($id);
+        return view('admin.backend.faqs.edit_faqs', compact('faqsId'));
+    }
+    // End Method
+
+    public function UpdateFaqs(Request $request) {
+        $faq_id = $request->id;
+
+        Faq::find($faq_id)->update([
+            'title' => $request->title,
+            'description' => $request->description
+        ]);
+
+        $notification = array(
+            'message' => 'Faqs Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.faqs')->with($notification);
+    }
+    // End Method
+
+    public function DeleteFaqs($id) {
+        Faq::find($id)->delete();
+        $notification = array(
+            'message' => 'Faqs Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
     }
 }
