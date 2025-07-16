@@ -30,20 +30,25 @@
       </div>
       <div class="row">
 
+        @php
+          $team = App\Models\Team::latest()->get();
+        @endphp
 
-        <div class="col-lg-3 col-md-6">
-          <div class="lonyo-team-wrap" data-aos="fade-up" data-aos-duration="500">
-            <div class="lonyo-team-thumb">
-              <a href="single-team.html"><img src="{{ asset('frontend/assets/images/about-us/t1.png') }}" alt=""></a>
+        @foreach ($team as $item)
+          <div class="col-lg-3 col-md-6">
+            <div class="lonyo-team-wrap" data-aos="fade-up" data-aos-duration="500">
+              <div class="lonyo-team-thumb">
+                <a href="single-team.html"><img src="{{ asset( $item->image ) }}" alt=""></a>
+              </div>
+              <div class="lonyo-team-content2">
+                <a href="single-team.html">
+                  <h6>{{ $item->name }}</h6>
+                </a>
+                <p>{{ $item->position }}</p>
+              </div>
             </div>
-            <div class="lonyo-team-content2">
-              <a href="single-team.html">
-                <h6>Michael Chen</h6>
-              </a>
-              <p>Chief Executive Officer</p>
-            </div>
-          </div>
         </div>
+        @endforeach
 
         
       </div>
