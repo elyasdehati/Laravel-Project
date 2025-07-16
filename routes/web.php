@@ -3,11 +3,13 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\backend\SliderController;
 use App\Http\Controllers\Backend\TeamController;
 use App\Http\Controllers\FrontendController;
+use App\Models\BlogCategory;
 
 Route::get('/', function () {
     return view('home.index');
@@ -114,6 +116,10 @@ Route::middleware('auth')->group(function () {
     Route::controller( FrontendController::class)->group(function () {
         Route::get('/get/aboutus','GetAboutUs')->name('get.aboutus');
         Route::post('/update/aboutus','UpdateAboutUs')->name('update.about');
+    });
+
+    Route::controller( BlogController::class)->group(function () {
+        Route::get('/blog/category','BlogCategory')->name('all.blog.category');
     });
 });
 
