@@ -55,7 +55,9 @@
         <div class="form-group mb-3 row">
             <label class="form-label">Description</label>
             <div class="col-lg-12 col-xl-12">
-                <textarea class="form-control" name="description">{{$about->description}}</textarea>
+                <div id="quill-editor" style="height: 200px;">
+                    {{ $about->description }}
+                </div>
             </div>
         </div>
 
