@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\BlogCategory;
+use App\Models\BlogPost;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
@@ -68,7 +70,14 @@ class FrontendController extends Controller
 
         return redirect()->back()->with($notification);
         }
-      
     }
     //End Method
+
+    public function BlogPage(){
+        $blogcat = BlogCategory::latest()->withCount('posts')->get();  //withCount('posts') in list_blog.blade.php , count the number of category that added. {{ $blog->posts_count }}
+
+        $post = BlogPost::latest()->limit(5)->get();
+
+        return view('home.blog.list_blog', compact('blogcat', 'post'));
+    }
 }
