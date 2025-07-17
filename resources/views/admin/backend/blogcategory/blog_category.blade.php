@@ -8,7 +8,7 @@
 
                         <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#standard-modal">
-                                                Standard Modal
+                                                Add Blog Category
                             </button>
                         </div>
 
@@ -40,8 +40,12 @@
                                                         <td>{{ $item->category_slug }}</td>
                                                         
                                                         <td>
-                                                            <a href="{{route('edit.review',$item->id)}}" class="btn btn-success btn-sm">Edit</a>
-                                                            <a href="{{route('delete.review',$item->id)}}" class="btn btn-danger btn-sm" id="delete">Delete</a>
+
+                                                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#category" id="{{ $item->id }}" onclick="categoryEdit(this.id)">
+                                                               Edit
+                                                            </button>
+
+                                                            <a href="{{route('delete.blog.category',$item->id)}}" class="btn btn-danger btn-sm" id="delete">Delete</a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -90,5 +94,52 @@
             </div>
         </div>
 </div>
+
+<!-- Edit Category Modal -->
+
+<div class="modal fade" id="category" tabindex="-1" aria-labelledby="standard-modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="standard-modalLabel">Edit Blog Category</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+            <form action="{{route('update.blog.category')}}" method="post">
+                @csrf
+
+                    <input type="hidden" id="cat_id" name="cat_id"  value="{{ $item->id }}">
+                        <div class="form-group col-md-12">
+                            <label for="input1" class="form-label">Blog Category Name</label>
+                            <input type="text" name="category_name" id="cat" class="form-control">
+                        </div>
+                    
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+            </div>
+        </div>
+</div>
+
+
+<script>
+    function categoryEdit(id) {
+        $.ajax({
+            type: 'GET',
+            url: '/edit/blog/category/'+id,
+            dataType: 'json',
+
+            success:function(data){
+                // console.log(data);
+                $('#cat').val(data.category_name);
+                $('#cat_id').val(data.id);
+            }
+        })
+    }
+</script>
 
 @endsection
