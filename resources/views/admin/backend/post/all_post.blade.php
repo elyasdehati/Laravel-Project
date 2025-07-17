@@ -41,8 +41,8 @@
                                                         <td><img src="{{ asset($item->image) }}" style="width: 70px; height: 40px;"></td>
                                                         <td>{!! Str::limit($item->long_desc, 80, '...') !!}</td>
                                                         <td>
-                                                            <a href="{{route('edit.review',$item->id)}}" class="btn btn-success btn-sm">Edit</a>
-                                                            <a href="{{route('delete.review',$item->id)}}" class="btn btn-danger btn-sm" id="delete">Delete</a>
+                                                            <a href="{{route('edit.blog.post',$item->id)}}" class="btn btn-success btn-sm">Edit</a>
+                                                            <a href="{{route('delete.blog.post',$item->id)}}" class="btn btn-danger btn-sm" id="delete">Delete</a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
