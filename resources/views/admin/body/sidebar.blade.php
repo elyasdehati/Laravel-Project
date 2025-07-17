@@ -218,6 +218,25 @@
                                 </div>
                             </li>
 
+                             <li>
+                                <a href="#blogpost" data-bs-toggle="collapse">
+                                    <i data-feather="alert-octagon"></i>
+                                    <span> Blog Post Setup </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <div class="collapse" id="blogpost">
+                                    <ul class="nav-second-level">
+                                        <li>
+                                            <a href="{{route('all.blog.post')}}" class="tp-link">All Blog Category</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('add.blog.post')}}" class="tp-link">Add Blog Category</a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </li>
+
                             <li>
                                 <a href="widgets.html" class="tp-link">
                                     <i data-feather="aperture"></i>

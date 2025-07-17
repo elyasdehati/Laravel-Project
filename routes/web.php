@@ -125,6 +125,12 @@ Route::middleware('auth')->group(function () {
         Route::post('/update/blog/category','UpdateBlogCategory')->name('update.blog.category');
         Route::get('/delete/blog/category/{id}','DeleteBlogCategory')->name('delete.blog.category');
     });
+
+    Route::controller( BlogController::class)->group(function () {
+        Route::get('/all/blog/post','AllBlogPost')->name('all.blog.post');
+        Route::get('/add/blog/post','AddBlogPost')->name('add.blog.post');
+        Route::post('/store/blog/post','StoreBlogPost')->name('store.blog.post');
+    });
 });
 
 // Out of Middleware
