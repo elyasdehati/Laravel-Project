@@ -218,7 +218,7 @@
                                 </div>
                             </li>
 
-                             <li>
+                            <li>
                                 <a href="#blogpost" data-bs-toggle="collapse">
                                     <i data-feather="alert-octagon"></i>
                                     <span> Blog Post Setup </span>
@@ -238,9 +238,9 @@
                             </li>
 
                             <li>
-                                <a href="widgets.html" class="tp-link">
+                                <a href="{{ route('contact.all.message') }}" class="tp-link">
                                     <i data-feather="aperture"></i>
-                                    <span> Widgets </span>
+                                    <span> Contact </span>
                                 </a>
                             </li>
 

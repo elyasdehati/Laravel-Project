@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\About;
 use App\Models\BlogCategory;
 use App\Models\BlogPost;
+use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Mailables\Content;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 
@@ -97,6 +99,34 @@ class FrontendController extends Controller
         $recentpost = BlogPost::latest()->limit(3)->get();
 
          return view('home.blog.blog_category', compact('blog', 'blogcat', 'recentpost','categoryname'));
+    }
+    // End Method
+
+    public function ContactUs(){
+        return view('home.contact.contact_us');
+    }
+    // End Method
+
+    public function ContactMessage(Request $request){
+
+            Contact::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'message' => $request->message,
+            ]);
+
+        $notification = array(
+            'message' => 'Your Message Sent Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }
+    //End Method
+
+    public function AllContactMessage(){
+        $message = Contact::latest()->get();
+        return view('admin.backend.contact.all_message', compact('message'));
     }
     // End Method
 }
